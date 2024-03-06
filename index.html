@@ -1,0 +1,49 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table border="2">
+
+    </table>
+    <script>
+       
+      fetch("https://fakestoreapi.com/products",{
+        method:"get"
+      }).then((val)=>{
+        return val.json()
+      }).then((val)=>{
+        var a=document.getElementsByTagName("table");
+       for(i=0;i<val.length;i++){
+        var tr=document.createElement("tr")
+        a[0].appendChild(tr);
+        var td1=document.createElement("td");
+        td1.innerText=val[i].id;
+        tr.appendChild(td1);
+        var td2=document.createElement("td")
+        td2.innerText=val[i].title
+        tr.appendChild(td2);
+        var td3=document.createElement("td");
+        tr.appendChild(td3);
+        var img=document.createElement("img")
+        img.setAttribute("src",val[i].image)
+        img.setAttribute("style","width:100px;height:100px;")
+        td3.appendChild(img);
+        var td4=document.createElement("td")
+        td4.innerText=val[i].category
+        tr.appendChild(td4);
+        var td5=document.createElement("td")
+        td5.innerText=val[i].price
+        tr.appendChild(td5);
+       }
+        
+       
+        
+      })
+
+       
+    </script>
+</body>
+</html>
